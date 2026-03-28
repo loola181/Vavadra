@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_core_level_1",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_core_level_1.png",
+  "target_drawable": "vavarda_lvl_1",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game key art, square splash illustration\nPrimary request: dark-fantasy evolution art for the Vavarda clicker at level 1, title Awakening\nScene/background: ruined ritual court at night, distant gothic ruins, faint violet mist, subtle sparks in the air\nSubject: a newly awakened hooded novice mage, central figure, simple dark robes with the first arcane glow gathering in one hand, mysterious glowing violet eyes\nStyle/medium: premium dark-fantasy game illustration, polished, readable, atmospheric, mobile game splash quality\nComposition/framing: centered full figure, square crop, strong silhouette, minimal clutter, clear focus on the mage\nLighting/mood: quiet, ominous, the first pulse of forbidden power, low light with violet accents\nColor palette: black, charcoal, dark plum, soft electric violet\nMaterials/textures: worn cloth, wet stone, faint rune smoke, subtle crystal sparks\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, one character only, make it feel like the very first form of a larger progression",
+  "revised_prompt": null
+}

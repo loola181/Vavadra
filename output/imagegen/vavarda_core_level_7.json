@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_core_level_7",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_core_level_7.png",
+  "target_drawable": "vavarda_lvl_7",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game key art, square splash illustration\nPrimary request: dark-fantasy evolution art for the Vavarda clicker at level 7, title Blade of the Void\nScene/background: ruined battlefield under a roiling violet sky, cracked obsidian ground, void sparks in the air\nSubject: central hooded battle-mage with heavier armor and a summoned void blade or crystalline arcane weapon, clearly deadlier than previous forms\nStyle/medium: premium dark-fantasy action illustration, polished, stylish, mobile game quality\nComposition/framing: centered full figure, square crop, strong combat silhouette, blade visible but not oversized\nLighting/mood: dangerous, martial, escalating power\nColor palette: obsidian black, violet core light, muted steel, subtle magenta\nMaterials/textures: battle armor, void crystal, torn cloak, dust and sparks\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, one character only",
+  "revised_prompt": null
+}

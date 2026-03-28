@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_core_level_6",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_core_level_6.png",
+  "target_drawable": "vavarda_lvl_6",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game key art, square splash illustration\nPrimary request: dark-fantasy evolution art for the Vavarda clicker at level 6, title Fiery Sigil\nScene/background: arcane chamber split by glowing sigils in the floor, fire-lit fog, broken ritual columns\nSubject: central hooded mage with sharper armor and a blazing rune sigil floating behind or above the hand, more aggressive stance, stronger magical presence\nStyle/medium: premium dark-fantasy mobile game art, dramatic, readable, polished\nComposition/framing: centered character, square composition, strong silhouette, one dominant sigil effect\nLighting/mood: hotter, more volatile, transitional step toward battle-mage power\nColor palette: black steel, ember orange, hot violet, dark smoke\nMaterials/textures: engraved armor, scorched cloth, burning sigils, haze\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, one character only, avoid clutter",
+  "revised_prompt": null
+}

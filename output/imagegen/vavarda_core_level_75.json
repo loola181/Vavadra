@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_core_level_75",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_core_level_75.png",
+  "target_drawable": "vavarda_core_level_75",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game key art, square splash illustration\nPrimary request: dark-fantasy evolution art for the Vavarda clicker at level 75, title Lord of Ruins\nScene/background: colossal ruined throne hall collapsing into a supernatural storm abyss, ancient pillars, drifting debris, distant fire and lightning\nSubject: massive imposing dark sovereign mage, central figure, heavier armor, shattered crown, spectral ruin-energy wings or torn magical mantle, commanding destruction with both hands\nStyle/medium: premium epic fantasy game art, dramatic, high-detail, stylized realism, polished for mobile splash screens\nComposition/framing: centered dominant figure, square image, broad silhouette, depth behind the character, clear layering from foreground shards to background ruins\nLighting/mood: apocalyptic, powerful, tyrannical, intense violet and ember light, heavy atmosphere\nColor palette: black steel, dark amethyst, ruined stone gray, ember orange accents, electric violet core light\nMaterials/textures: broken stone, rune shards, scarred armor, smoke, charged dust\nQuality: high\nConstraints: no text, no logo, no watermark, no decorative border, no secondary hero character, focus on scale and authority",
+  "revised_prompt": null
+}

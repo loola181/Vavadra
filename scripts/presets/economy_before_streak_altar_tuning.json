@@ -1,0 +1,184 @@
+{
+  "tap": {
+    "startingPower": 1,
+    "baseCost": 20,
+    "costOffset": 0,
+    "powerPerUpgrade": 1
+  },
+  "auto": {
+    "startingPower": 0,
+    "baseCost": 100,
+    "costOffset": 1,
+    "powerPerUpgrade": 1
+  },
+  "prestige": {
+    "baseCost": 5000,
+    "levelBonusPerRitual": 3,
+    "resetTapPower": 1,
+    "resetAutoPower": 0
+  },
+  "levels": {
+    "maxLevel": 999,
+    "essenceFactor": 20,
+    "targetLevels": [10, 25, 50, 75, 100],
+    "artMilestones": [
+      { "level": 1, "drawableName": "vavarda_lvl_1", "title": "Пробуждение" },
+      { "level": 2, "drawableName": "vavarda_lvl_2", "title": "Первые Искры" },
+      { "level": 3, "drawableName": "vavarda_lvl_3", "title": "Арканист" },
+      { "level": 4, "drawableName": "vavarda_lvl_4", "title": "Хранитель Томов" },
+      { "level": 5, "drawableName": "vavarda_lvl_5", "title": "Жрец Пепла" },
+      { "level": 6, "drawableName": "vavarda_lvl_6", "title": "Огненный Сигил" },
+      { "level": 7, "drawableName": "vavarda_lvl_7", "title": "Клинок Пустоты" },
+      { "level": 8, "drawableName": "vavarda_lvl_8", "title": "Владыка Гроз" },
+      { "level": 9, "drawableName": "vavarda_lvl_9", "title": "Голос Бури" },
+      { "level": 10, "drawableName": "vavarda_lvl_10", "title": "Вестник Сердца" },
+      { "level": 25, "drawableName": "vavarda_lvl_25", "title": "Штормовой Лорд" },
+      { "level": 50, "drawableName": "vavarda_lvl_50", "title": "Архон Отката" },
+      { "level": 75, "drawableName": "vavarda_lvl_75", "title": "Повелитель Руин" },
+      { "level": 100, "drawableName": "vavarda_lvl_100", "title": "Истинное Имя" }
+    ]
+  },
+  "rewards": [
+    {
+      "level": 10,
+      "title": "Уровень 10: Всплеск Искр",
+      "description": "+1500 Искр",
+      "kind": "ESSENCE",
+      "amount": 1500
+    },
+    {
+      "level": 25,
+      "title": "Уровень 25: Рунная Сила",
+      "description": "+2 к силе клика",
+      "kind": "TAP_POWER",
+      "amount": 2
+    },
+    {
+      "level": 50,
+      "title": "Уровень 50: Механика Ритма",
+      "description": "+2 к авто-приросту",
+      "kind": "AUTO_POWER",
+      "amount": 2
+    },
+    {
+      "level": 75,
+      "title": "Уровень 75: Дар Ковена",
+      "description": "+15000 Искр",
+      "kind": "ESSENCE",
+      "amount": 15000
+    },
+    {
+      "level": 100,
+      "title": "Уровень 100: Истинный Резонанс",
+      "description": "+5 к силе клика",
+      "kind": "TAP_POWER",
+      "amount": 5
+    }
+  ],
+  "factions": {
+    "SHADOW": {
+      "name": "Тьма",
+      "description": "Усиленный урон и клик, чуть слабее авто-прирост.",
+      "tapMultiplier": 1.18,
+      "autoMultiplier": 0.9,
+      "bossDamageMultiplier": 1.25
+    },
+    "LIGHT": {
+      "name": "Свет",
+      "description": "Ускоренный авто-прирост и стабильная экономика.",
+      "tapMultiplier": 0.9,
+      "autoMultiplier": 1.2,
+      "bossDamageMultiplier": 0.95
+    }
+  },
+  "daily": {
+    "missionCount": 3,
+    "tapBaseTarget": 120,
+    "tapStep": 35,
+    "upgradeBaseTarget": 4,
+    "upgradeStep": 1,
+    "essenceBaseTarget": 5000,
+    "essenceStep": 2500
+  },
+  "boss": {
+    "spawnIntervalSeconds": 180,
+    "fightDurationSeconds": 20,
+    "baseHp": 180,
+    "hpPerLevel": 16,
+    "rewardPerHp": 12
+  },
+  "offline": {
+    "enabled": true,
+    "maxSeconds": 28800
+  },
+  "retention": {
+    "crit": {
+      "baseCost": 450,
+      "costGrowth": 1.65,
+      "maxLevel": 20,
+      "baseChance": 0.08,
+      "chancePerLevel": 0.025,
+      "baseMultiplier": 2.0,
+      "multiplierPerLevel": 0.08
+    },
+    "streak": {
+      "baseCost": 380,
+      "costGrowth": 1.6,
+      "maxLevel": 20,
+      "baseThreshold": 12,
+      "thresholdReductionPerLevel": 0.4,
+      "baseBurstMultiplier": 1.3,
+      "burstMultiplierPerLevel": 0.06
+    },
+    "offlineBoost": {
+      "baseCost": 520,
+      "costGrowth": 1.7,
+      "maxLevel": 15,
+      "baseMultiplier": 1.0,
+      "multiplierPerLevel": 0.2
+    },
+    "cache": {
+      "baseCost": 760,
+      "costGrowth": 1.76,
+      "maxLevel": 12,
+      "baseCooldownMinutes": 52,
+      "cooldownReductionPerLevel": 2,
+      "minCooldownMinutes": 22,
+      "baseReward": 1200,
+      "rewardPerLevel": 620,
+      "rewardPerPlayerLevel": 40,
+      "shardReward": 1
+    },
+    "returnStreak": {
+      "baseReward": 900,
+      "rewardPerDay": 700,
+      "shardEveryDays": 4,
+      "shardsPerMilestone": 1,
+      "showcaseDays": 7,
+      "milestones": [
+        { "day": 7, "title": "Седьмой Знак", "rewardEssence": 10000, "rewardShards": 2 },
+        { "day": 14, "title": "Двойной Обет", "rewardEssence": 22000, "rewardShards": 3 },
+        { "day": 30, "title": "Тридцатая Печать", "rewardEssence": 60000, "rewardShards": 6 }
+      ]
+    },
+    "relic": {
+      "maxLevel": 10,
+      "baseShardsForLevel": 5,
+      "shardsGrowthPerLevel": 3,
+      "tapMultiplierPerLevel": 0.03,
+      "autoMultiplierPerLevel": 0.04,
+      "bossMultiplierPerLevel": 0.05
+    },
+    "altar": {
+      "favorFromDaily": 4,
+      "favorFromBoss": 10,
+      "favorFromCache": 3,
+      "favorFromReturn": 5,
+      "tiers": [
+        { "tier": 1, "title": "Пепельная Чаша", "requiredFavor": 24, "rewardEssence": 6500, "rewardShards": 2 },
+        { "tier": 2, "title": "Коронный Обет", "requiredFavor": 56, "rewardEssence": 15000, "rewardShards": 3 },
+        { "tier": 3, "title": "Сердце Сезона", "requiredFavor": 96, "rewardEssence": 36000, "rewardShards": 6 }
+      ]
+    }
+  }
+}

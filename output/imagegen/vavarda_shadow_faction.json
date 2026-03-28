@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_shadow_faction",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_shadow_faction.png",
+  "target_drawable": "vavarda_shadow_faction",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: faction art, square mobile game illustration\nPrimary request: Shadow faction key art for Vavarda\nScene/background: ruined black citadel, storm clouds, void fissures, burning purple sigils in the air\nSubject: central commander of the Shadow path, hooded elite warlock-knight with jagged armor, violet eyes, dark staff or blade, severe and elegant\nStyle/medium: premium dark-fantasy faction illustration, highly polished, strong silhouette, mobile game quality\nComposition/framing: centered full figure, square crop, clear faction portrait, intimidating but noble\nLighting/mood: ruthless, dangerous, magnetic, storm-lit with controlled violet glow\nColor palette: black, obsidian, amethyst, silver, muted crimson traces\nMaterials/textures: rune armor, tattered cloak, storm smoke, void crystal\nQuality: high\nConstraints: no text, no logo, no watermark, no decorative frame, one character only, no messy background crowd",
+  "revised_prompt": null
+}

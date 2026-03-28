@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_return_streak_premium",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_return_streak_premium.png",
+  "target_drawable": "vavarda_return_streak",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game system art, square illustration\nPrimary request: premium return streak reward art for Vavarda, representing a daily ritual chain that must be maintained\nScene/background: dark ceremonial hall with suspended clocks, drifting rune embers, subtle star-like particles, long ritual perspective\nSubject: central floating daily streak sigil or chained crystal calendar relic, glowing with layered violet and pale gold light, clearly representing continuity and daily return rewards\nStyle/medium: premium dark-fantasy feature illustration for a mobile game, elegant, readable, atmospheric, polished\nComposition/framing: centered relic or ritual emblem, square crop, balanced symmetry, strong focal point, no clutter\nLighting/mood: rewarding, persistent, slightly sacred, long-term progression energy rather than combat\nColor palette: deep plum, black, pale gold, violet glow, restrained silver accents\nMaterials/textures: rune crystal, metal chain motifs, arcane dust, sacred smoke\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, no human character, make it feel like a premium daily streak reward feature, not a generic chest",
+  "revised_prompt": null
+}

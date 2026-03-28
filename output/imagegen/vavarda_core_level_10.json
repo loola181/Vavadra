@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_core_level_10",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_core_level_10.png",
+  "target_drawable": "vavarda_lvl_10",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game key art, square splash illustration\nPrimary request: dark-fantasy evolution art for the Vavarda clicker at level 10, title Herald of the Heart\nScene/background: grand ruined sanctum with a storm-lit ritual heart or core of power in the distance, fractured architecture, high contrast atmosphere\nSubject: central herald mage, fully evolved early-game form, elegant but dangerous, ornate dark armor with a radiant violet chest crystal, commanding a dense sphere of arcane energy\nStyle/medium: premium dark-fantasy game illustration, polished hero milestone art, strong readability and premium finish\nComposition/framing: centered full figure, square crop, iconic silhouette, milestone-worthy but still below endgame scale\nLighting/mood: triumphant, dangerous, ceremonial, a clear capstone of the first progression arc\nColor palette: black, rich amethyst, silver, intense violet light, subtle magenta highlights\nMaterials/textures: engraved armor, rune crystal, sacred smoke, broken sanctum stone\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, one character only, make it feel like the peak of the first ten levels",
+  "revised_prompt": null
+}

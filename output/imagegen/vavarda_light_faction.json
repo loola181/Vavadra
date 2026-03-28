@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_light_faction",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_light_faction.png",
+  "target_drawable": "vavarda_light_faction",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: faction art, square mobile game illustration\nPrimary request: Light faction key art for Vavarda\nScene/background: luminous temple heights above storm clouds, radiant sigils, marble steps, celestial sky breaks\nSubject: central guardian of the Light path, battle-mage in ivory and gold armor with blue-white magic, elegant staff or halo blade, calm but powerful\nStyle/medium: premium fantasy faction illustration, polished, readable, made for a mobile game path selection screen\nComposition/framing: centered full figure, square composition, heroic silhouette, balanced and clean\nLighting/mood: radiant, disciplined, sacred, noble, with subtle divine power rather than soft weakness\nColor palette: ivory, pale gold, cold blue-white light, silver, faint violet echoes to match the world\nMaterials/textures: polished armor, temple stone, sacred cloth, crystal light particles\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, one character only, keep the Light faction powerful and high-status, not generic angel art",
+  "revised_prompt": null
+}

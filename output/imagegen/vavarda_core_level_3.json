@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_core_level_3",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_core_level_3.png",
+  "target_drawable": "vavarda_lvl_3",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game key art, square splash illustration\nPrimary request: dark-fantasy evolution art for the Vavarda clicker at level 3, title Arcanist\nScene/background: ruined arcane library district, broken towers, rune haze, drifting paper ash and violet energy\nSubject: hooded arcanist, central figure, robe upgraded with silver rune trims and a more deliberate arcane pose, gathering a controlled sphere of violet power\nStyle/medium: premium dark-fantasy game art, painterly, highly readable, polished for mobile\nComposition/framing: centered figure, square crop, clean focal point, elegant silhouette\nLighting/mood: more intelligent, controlled, scholarly power, mysterious and cold\nColor palette: black, silver accents, dark plum, arcane violet\nMaterials/textures: rune cloth, light armor trim, floating dust, magical glow\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, one character only",
+  "revised_prompt": null
+}

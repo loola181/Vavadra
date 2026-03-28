@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_core_level_5_retouch",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_core_level_5_retouch.png",
+  "target_drawable": "vavarda_lvl_5",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game key art, square splash illustration\nPrimary request: refined dark-fantasy evolution art for the Vavarda clicker at level 5, title Ash Priest\nScene/background: ritual nave filled with ash haze and dim braziers, clearer separation between character and background, atmospheric but readable\nSubject: central ash priest with stronger silhouette, hooded, darker ceremonial armor, violet ember core in the chest and ashen ritual smoke spiraling around the body\nStyle/medium: premium dark-fantasy mobile game illustration, polished and readable on phone screens, progression-consistent\nComposition/framing: centered full figure, square composition, clear focal point on the torso and hands, reduced mud and shadow loss\nLighting/mood: grim devotion, smoky ritual power, controlled menace\nColor palette: charcoal, black steel, muted ember orange, rich violet highlights\nMaterials/textures: ash cloth, scarred armor, smoke, embers, rune heat\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, one character only, preserve dark mood but improve clarity and separation",
+  "revised_prompt": null
+}

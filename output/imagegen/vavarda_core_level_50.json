@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_core_level_50",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_core_level_50.png",
+  "target_drawable": "vavarda_core_level_50",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game key art, square splash illustration\nPrimary request: dark-fantasy evolution art for the Vavarda clicker at level 50, title Archon of Reversal\nScene/background: shattered ritual observatory suspended above a void of rotating runes and broken clockwork halos\nSubject: central ascended mage with layered ceremonial armor and a levitating time-rune crown, controlling spiraling rewind magic with one hand and a fractured relic staff with the other\nStyle/medium: premium dark-fantasy concept art for a mobile game, detailed, elegant, high readability, not photorealistic\nComposition/framing: centered character, square crop, strong vertical silhouette, magical orbiting runes framing the torso without clutter\nLighting/mood: arcane eclipse lighting, cold purple energy, subtle gold sparks from temporal distortion, majestic and severe\nColor palette: obsidian black, deep plum, luminous violet, pale gold accents, ghostly cyan sparks\nMaterials/textures: engraved relic metal, crystalline rune glass, layered robes, floating dust, broken marble\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, no extra monsters, avoid messy composition, keep one dominant character and clear focal point",
+  "revised_prompt": null
+}

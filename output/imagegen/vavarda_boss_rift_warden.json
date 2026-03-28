@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_boss_rift_warden",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_boss_rift_warden.png",
+  "target_drawable": "vavarda_boss_rift_warden",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game boss card art, square illustration\nPrimary request: boss art for Vavarda, a Rift Warden emerging from a violet dimensional tear\nScene/background: ritual battlefield split by a vertical arcane rift, broken cathedral floor, storm clouds, magical fragments in the air\nSubject: gigantic armored boss with jagged obsidian plating, glowing violet core, heavy weapon or clawed gauntlet, central and intimidating\nStyle/medium: premium dark-fantasy boss illustration, mobile game quality, stylized realism, readable silhouette and strong boss presence\nComposition/framing: centered monster, square crop, close enough to feel threatening, clear negative space around the silhouette\nLighting/mood: hostile, urgent, active combat energy, rift glow from behind, violent purple highlights\nColor palette: obsidian black, iron gray, hot violet, crimson undertones\nMaterials/textures: cracked stone, jagged armor, burning rift particles, magical smoke\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, no tiny distant composition, one boss only, must read instantly as a boss encounter",
+  "revised_prompt": null
+}

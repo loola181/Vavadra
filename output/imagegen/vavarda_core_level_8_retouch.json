@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_core_level_8_retouch",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_core_level_8_retouch.png",
+  "target_drawable": "vavarda_lvl_8",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game key art, square splash illustration\nPrimary request: refined dark-fantasy evolution art for the Vavarda clicker at level 8, title Lord of Storms\nScene/background: towering ruined citadel under a violent violet thunderstorm, less cyan, more consistent with the main Vavarda palette\nSubject: central storm lord battle-mage, hooded, ornate obsidian armor, commanding a bright branching violet lightning spear or bolt, more elite and readable than level 7\nStyle/medium: premium dark-fantasy game splash art, high-detail, polished, readable at small size, consistent with levels 7, 9 and 25\nComposition/framing: centered figure, square crop, one dominant lightning gesture, clean silhouette, dramatic sky\nLighting/mood: commanding, electric, elevated authority, imperial storm power\nColor palette: black, silver, deep amethyst, electric violet, minimal blue undertones\nMaterials/textures: polished armor, storm haze, rain, lightning energy, gothic stone\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, one character only, avoid a cyan-heavy palette and keep the world visually consistent with the rest of the set",
+  "revised_prompt": null
+}

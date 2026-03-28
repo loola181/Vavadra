@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_core_level_4_retouch",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_core_level_4_retouch.png",
+  "target_drawable": "vavarda_lvl_4",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game key art, square splash illustration\nPrimary request: refined dark-fantasy evolution art for the Vavarda clicker at level 4, title Keeper of Tomes\nScene/background: ruined occult archive with tall stone shelves and broken arches, subtle floating rune pages, less cluttered than before\nSubject: central hooded keeper-mage with cleaner silhouette, layered robes, restrained armor trims, one hand controlling a compact violet tome-sigil, the other hand gathering arcane power\nStyle/medium: premium dark-fantasy mobile game illustration, polished, highly readable at small size, progression-consistent with levels 3 and 5\nComposition/framing: centered full figure, square crop, strong silhouette, minimal side clutter, visible chest and hand magic\nLighting/mood: scholarly, secretive, more powerful than level 3 but not yet warlike, elegant and ominous\nColor palette: black, silver, dark plum, controlled violet glow\nMaterials/textures: rune cloth, book dust, occult stone, subtle page fragments\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, one character only, avoid gold-heavy palette and avoid distracting background shards",
+  "revised_prompt": null
+}

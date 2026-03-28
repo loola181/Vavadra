@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_relic_vault",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_relic_vault.png",
+  "target_drawable": "vavarda_relic_vault",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game system art, square illustration\nPrimary request: Relic Vault art for Vavarda, a sanctuary where shards become permanent power\nScene/background: underground arcane sanctum with carved vault walls, glowing circles, suspended relic shards and ancient mechanisms\nSubject: central vault altar or reliquary pedestal with floating crystal shards orbiting above it, powerful but elegant\nStyle/medium: premium dark-fantasy feature illustration, rich detail, clean silhouette, made for in-game system card\nComposition/framing: centered altar, square composition, symmetric and ceremonial, clear focal point\nLighting/mood: mystical, sacred, slow-burning power, cool cyan-violet light with subtle depth\nColor palette: midnight blue, black stone, silver, cyan-violet glow, restrained gold details\nMaterials/textures: stone vault, relic crystal, polished metal, magical dust\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, no hero character, avoid clutter, must read as a magical progression chamber",
+  "revised_prompt": null
+}

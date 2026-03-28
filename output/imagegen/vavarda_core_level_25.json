@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_core_level_25",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_core_level_25.png",
+  "target_drawable": "vavarda_core_level_25",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game key art, square splash illustration\nPrimary request: dark-fantasy evolution art for the Vavarda clicker at level 25, title Storm Lord\nScene/background: ruined gothic citadel under a violet storm sky, distant towers, charged clouds, magical rain haze\nSubject: central hooded battle-mage in ornate obsidian and silver armor, holding a crackling sphere of purple lightning, commanding storm energy\nStyle/medium: premium dark-fantasy game illustration, highly detailed, painterly but sharp, readable silhouette, premium mobile game polish\nComposition/framing: centered full figure, square composition, large clear focal point, room around the silhouette, readable at small size\nLighting/mood: violent magical lightning, luminous violet highlights, dramatic contrast, ominous and powerful\nColor palette: black, obsidian, cold silver, electric violet, restrained magenta glow\nMaterials/textures: engraved metal, rune crystal, storm cloth, wet stone, lightning energy\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, no extra characters, keep the face mostly hidden except glowing eyes, make the character feel upgraded and dangerous",
+  "revised_prompt": null
+}

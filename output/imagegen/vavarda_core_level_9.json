@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_core_level_9",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_core_level_9.png",
+  "target_drawable": "vavarda_lvl_9",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game key art, square splash illustration\nPrimary request: dark-fantasy evolution art for the Vavarda clicker at level 9, title Voice of the Storm\nScene/background: high spired ruin consumed by arcane lightning, storm vortex overhead, reality ripples around the character\nSubject: central hooded archmage, more refined and sovereign, runic storm sigils orbiting the head and shoulders, commanding weather and void at once\nStyle/medium: premium dark-fantasy splash illustration, iconic and polished, readable for mobile game milestone art\nComposition/framing: centered figure, square composition, sigils framing the torso and head without clutter\nLighting/mood: exalted, severe, overwhelming but controlled\nColor palette: obsidian, deep violet, silver, flashes of white lightning\nMaterials/textures: rune armor, storm particles, magical haze, wet stone\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, one character only",
+  "revised_prompt": null
+}

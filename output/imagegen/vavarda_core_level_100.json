@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_core_level_100",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_core_level_100.png",
+  "target_drawable": "vavarda_core_level_100",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game key art, square splash illustration\nPrimary request: final ascension art for the Vavarda clicker at level 100, title True Name\nScene/background: cosmic ritual horizon, torn sky, eclipse halo, floating monolith sigils, reality split by violet energy\nSubject: ultimate hooded god-mage, centered, transcendent and terrifying, intricate ceremonial armor, radiant true-name sigils orbiting the body, one hand summoning a condensed singularity of arcane power\nStyle/medium: premium legendary dark-fantasy splash art, extremely polished, elegant, iconic, made for milestone endgame reward\nComposition/framing: centered hero, square composition, strong symmetry, large silhouette, readable face glow and hands, minimal clutter\nLighting/mood: divine and ominous, majestic final-form energy, deep contrast, controlled cosmic glow\nColor palette: black, deep violet, pale silver, eclipse gold, occasional white arcane highlights\nMaterials/textures: rune metal, crystalline sigils, flowing sacred cloth, cosmic dust, magical fractures in space\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, no extra characters, make it feel like an endgame ascension image",
+  "revised_prompt": null
+}

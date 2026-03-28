@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_core_level_2",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_core_level_2.png",
+  "target_drawable": "vavarda_lvl_2",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game key art, square splash illustration\nPrimary request: dark-fantasy evolution art for the Vavarda clicker at level 2, title First Sparks\nScene/background: same ruined magical courtyard, storm clouds beginning to gather, stray purple sparks and thin lightning traces\nSubject: hooded novice mage slightly more empowered, simple armor details appearing, stronger energy swirling in the palm, brighter eyes\nStyle/medium: premium dark-fantasy mobile game illustration, polished, readable silhouette, progression-friendly\nComposition/framing: centered full figure, square composition, clean silhouette, visible hand magic\nLighting/mood: early power growth, restrained but clearly stronger than level 1\nColor palette: charcoal black, muted steel, deeper violet glow\nMaterials/textures: cloth, stone, faint metal trim, magical sparks\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, one character only, preserve the same world and progression direction",
+  "revised_prompt": null
+}

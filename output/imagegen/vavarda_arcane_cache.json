@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_arcane_cache",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_arcane_cache.png",
+  "target_drawable": "vavarda_arcane_cache",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game system art, square illustration\nPrimary request: premium Arcane Cache reward art for Vavarda\nScene/background: dark ritual chamber with floating dust, candle smoke, fractured rune circle on the floor\nSubject: central magical cache chest or vault reliquary, ornate dark metal with glowing violet seams, partially open with sparks and essence escaping\nStyle/medium: premium fantasy UI illustration, highly polished, decorative but readable, suitable for game feature card\nComposition/framing: centered object, square crop, bold silhouette, no clutter, item-focused\nLighting/mood: mysterious and rewarding, contained arcane light bursting from within\nColor palette: black metal, deep purple, silver trim, warm gold spark accents\nMaterials/textures: engraved metal, rune crystal, smoke, magical embers\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, no human character, keep it iconically readable as a reward cache",
+  "revised_prompt": null
+}

@@ -1,0 +1,10 @@
+{
+  "slug": "vavarda_season_altar",
+  "output": "/Users/andrejivliev/Desktop/Vavadra/output/imagegen/vavarda_season_altar.png",
+  "target_drawable": "vavarda_season_altar",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": "high",
+  "prompt": "Use case: stylized-concept\nAsset type: mobile game system art, square illustration\nPrimary request: Seasonal Altar art for Vavarda, a weekly favor progression feature\nScene/background: elevated temple platform under a supernatural night sky, celestial rings, ritual lanterns, subtle storm haze\nSubject: central altar monolith with circular favor sigils, hovering blessing fragments, elegant weekly ritual device\nStyle/medium: premium fantasy progression illustration, polished, atmospheric, suitable for a feature panel\nComposition/framing: centered altar, square crop, balanced layout, visually rich but readable at small sizes\nLighting/mood: ceremonial, aspirational, premium reward energy, soft gold and violet interplay\nColor palette: deep indigo, black stone, pale gold, violet glow, cool silver accents\nMaterials/textures: carved stone, polished metal, floating sigils, ether light\nQuality: high\nConstraints: no text, no logo, no watermark, no frame, no character, make it feel like a weekly ritual destination",
+  "revised_prompt": null
+}
