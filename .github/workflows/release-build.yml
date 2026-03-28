@@ -1,0 +1,66 @@
+name: Release Build (APK + AAB)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Signed Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Decode Keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > $GITHUB_WORKSPACE/vavadra-release.jks
+
+      - name: Build Signed Release APK
+        run: |
+          ./gradlew assembleRelease \
+            -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/vavadra-release.jks \
+            -Pandroid.injected.signing.store.password=${{ secrets.STORE_PASSWORD }} \
+            -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
+            -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }}
+
+      - name: Build Signed Release AAB
+        run: |
+          ./gradlew bundleRelease \
+            -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/vavadra-release.jks \
+            -Pandroid.injected.signing.store.password=${{ secrets.STORE_PASSWORD }} \
+            -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
+            -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }}
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: vavadra-release-apk
+          path: app/build/outputs/apk/release/*.apk
+          retention-days: 30
+
+      - name: Upload AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: vavadra-release-aab
+          path: app/build/outputs/bundle/release/*.aab
+          retention-days: 30
+
+      - name: Show build outputs
+        run: |
+          echo "=== APK ==="
+          find app/build/outputs/apk/release -name "*.apk" -exec ls -lh {} \;
+          echo "=== AAB ==="
+          find app/build/outputs/bundle/release -name "*.aab" -exec ls -lh {} \;
