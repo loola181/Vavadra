@@ -105,10 +105,9 @@ class RemoteWebActivity : ComponentActivity() {
                 setGeolocationEnabled(true)
             }
 
-            CookieManager.getInstance().apply {
-                setAcceptCookie(true)
-                setAcceptThirdPartyCookies(this@apply, true)
-            }
+            val cookies = CookieManager.getInstance()
+            cookies.setAcceptCookie(true)
+            cookies.setAcceptThirdPartyCookies(this, true)
 
             webViewClient = buildWebViewClient()
             webChromeClient = buildChromeClient()
