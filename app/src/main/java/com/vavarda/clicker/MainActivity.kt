@@ -148,6 +148,7 @@ import kotlin.math.sqrt
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
@@ -157,6 +158,7 @@ import kotlinx.coroutines.withContext
 class MainActivity : ComponentActivity() {
     private var nextOpenScreenRequestId = 0L
     private var openScreenRequest by mutableStateOf<ScreenOpenRequest?>(null)
+    private var remoteGateState by mutableStateOf(RemoteGatePhase.CHECKING)
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(forceRussianContext(newBase))
@@ -168,9 +170,19 @@ class MainActivity : ComponentActivity() {
         setContent {
             VavardaTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    VavardaClickerScreen(openScreenRequest = openScreenRequest)
+                    when (remoteGateState) {
+                        RemoteGatePhase.CHECKING -> RemoteGateLoadingScreen()
+                        RemoteGatePhase.READY -> VavardaClickerScreen(openScreenRequest = openScreenRequest)
+                    }
                 }
             }
+        }
+        lifecycleScope.launch {
+            val result = RemoteExperimentClient.resolve(this@MainActivity.applicationContext)
+            if (result is RemoteExperimentResult.WelcomeUrl) {
+                launchRemoteWebActivity(this@MainActivity, result.url)
+            }
+            remoteGateState = RemoteGatePhase.READY
         }
     }
 

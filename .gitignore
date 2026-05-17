@@ -16,4 +16,5 @@ local.properties
 vavadra-release.jks
 .cursor/
 release_artifacts/
+release_artifacts_*/
 
