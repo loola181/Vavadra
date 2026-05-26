@@ -1,43 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle">
-            <gradient
-                android:angle="270"
-                android:startColor="#0B0815"
-                android:centerColor="#2B1443"
-                android:endColor="#06040E" />
-        </shape>
-    </item>
-
-    <item android:gravity="center">
-        <shape android:shape="oval">
-            <size
-                android:width="90dp"
-                android:height="90dp" />
-            <gradient
-                android:type="radial"
-                android:centerX="50%"
-                android:centerY="40%"
-                android:gradientRadius="52dp"
-                android:startColor="#66442A7A"
-                android:endColor="#002B1443" />
-        </shape>
-    </item>
-
-    <item
-        android:gravity="center"
-        android:top="18dp"
-        android:right="-10dp">
-        <shape android:shape="oval">
-            <size
-                android:width="40dp"
-                android:height="40dp" />
-            <gradient
-                android:type="radial"
-                android:gradientRadius="22dp"
-                android:startColor="#223DDCFF"
-                android:endColor="#003DDCFF" />
-        </shape>
-    </item>
-</layer-list>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#0B0815" />
+</shape>

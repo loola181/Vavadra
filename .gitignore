@@ -18,3 +18,8 @@ vavadra-release.jks
 release_artifacts/
 release_artifacts_*/
 
+# Source assets dropped into project root for icon/material generation
+/*.jpg
+/*.jpeg
+/*.png
+
